@@ -35,6 +35,8 @@ x-common:
 services:
   database:
     image: mariadb:10.5
+    ports:
+    - "3306:3306"
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     volumes:
@@ -48,6 +50,8 @@ services:
     restart: always
   panel:
     image: ghcr.io/pterodactyl/panel:latest
+    labels:
+      shipyard.route: '/'
     restart: always
     ports:
       - "80:80"
